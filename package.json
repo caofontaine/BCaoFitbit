@@ -1,0 +1,14 @@
+{
+  "name": "BCaoFitbit",
+  "version": "0.0.0",
+  "description": "POC of importing FitBit CSV data",
+  "main": "server.js",
+  "author": "Ben Cao",
+  "dependencies": {
+    "express": "~4.14.0",
+    "morgan": "~1.7.0",
+    "body-parser": "~1.15.2",
+    "method-override": "~2.3.6",
+    "mongoose": "~4.6.3"
+  }
+}

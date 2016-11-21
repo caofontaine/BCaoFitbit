@@ -1,0 +1,34 @@
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="BCaoFitbit">
+<head>
+  <!-- META -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+  <title>Ben's Fitbit Data</title>
+
+  <!-- SCROLLS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+  <style>
+    html                    { overflow-y:scroll; }
+    body                    { padding-top:50px; }
+  </style>
+
+  <!-- SPELLS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script> <!-- load angular -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- load Google Charts -->
+  <script src="js/controllers/main.js"></script> <!-- load up our controller -->
+  <script src="js/services/fitbitPOCs.js"></script> <!-- load service -->
+  <script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+
+<body ng-controller="mainController">
+
+  <div class="container">
+    <div id="chart_div" style="width: 100%; height: 100%;"></div>
+  </div>
+
+</body>
+</html>
