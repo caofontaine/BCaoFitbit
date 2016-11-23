@@ -1,8 +1,8 @@
 /*Grab the data from the API call and format it in Google Charts.*/
 
-angular.module('fitbitPOCController', []).controller('mainController', function($scope, $http, fitbitPOCs) {
+angular.module('BCaoFitbitController', []).controller('mainController', function($scope, $http, BCaoFitbits) {
 
-    fitbitPOCs.get().success(function(data) {
+    BCaoFitbits.get().success(function(data) {
       var fitbitData;
       fitbitData = data;
 				
