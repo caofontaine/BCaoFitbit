@@ -42,6 +42,12 @@ angular.module('BCaoFitbitController', []).controller('mainController', function
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
         chart.draw(stepData, options);
+        
       }
+      
+      // Makes chart responsive to resize of browser.
+      $(window).resize(function(){
+        drawChart();
+      });
     });
 });
