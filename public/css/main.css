@@ -1,0 +1,11 @@
+/* main.css */
+
+body {
+  background-color: #515A5A;
+}
+
+#chart_div {
+  border-radius: 5px;
+  background: #000000;
+  padding: 3px; 
+}
