@@ -2,13 +2,14 @@
 
 angular.module('BCaoFitbitController', []).controller('mainController', function($scope, $http, BCaoFitbits) {
 
-    BCaoFitbits.get().success(function(data) {
+    BCaoFitbits.get().then(function(data) { //success() deprecated in 1.6.1
       var fitbitData;
       fitbitData = data;
-				
-      //console.log(fitbitData[0]['Date']);
-      //console.log(fitbitData[0]['Steps']);
-      //console.log(parseInt(fitbitData[0]['Steps'].replace(/\,/g,'')));
+			
+      //console.log(fitbitData.data[0]);
+      //console.log(fitbitData.data[0]['Date']);
+      //console.log(fitbitData.data[0]['Steps']);
+      //console.log(parseInt(fitbitData.data[0]['Steps'].replace(/\,/g,'')));
 			
       google.charts.load('current', {packages: ['corechart', 'line']});
       google.charts.setOnLoadCallback(drawChart);
@@ -18,17 +19,17 @@ angular.module('BCaoFitbitController', []).controller('mainController', function
         stepData.addColumn('string', 'Date');
         stepData.addColumn('number', 'Steps');
 				
-        console.log(fitbitData.length);
+        //console.log(fitbitData.length);
 				
-        for(var i = 0; i < fitbitData.length; i++) {
+        for(var i = 0; i < fitbitData.data.length; i++) {
           // Data has number of steps as a string (since it has commas). Convert it to integer.
           // Must get rid of comma while doing so, or will error.
-          var strToInt = parseInt(fitbitData[i]['Steps'].replace(/\,/g,''));
+          var strToInt = parseInt(fitbitData.data[i]['Steps'].replace(/\,/g,''));
 					
-          stepData.addRow([fitbitData[i]['Date'], strToInt]);
+          stepData.addRow([fitbitData.data[i]['Date'], strToInt]);
         }
 
-        //stepData.addRows([[fitbitData[0]['Date'], parseInt(fitbitData[0]['Steps'].replace(/\,/g,''))]]);
+        //stepData.addRows([[fitbitData.data[0]['Date'], parseInt(fitbitData[0]['Steps'].replace(/\,/g,''))]]);
 
         var options = {
           hAxis: {
