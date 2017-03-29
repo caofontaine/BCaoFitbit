@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
     Schema = mongoose.Schema;
 
 var allData = mongoose.Schema({
-  Date: String,
+  Date: Date,
   CaloriesBurned: Number,
   NumSteps: Number,
   Distance: Number,
@@ -18,7 +18,7 @@ var allData = mongoose.Schema({
 {collection: 'fitbitdata'});
 
 var fitbitSpecific = mongoose.Schema({
-  Date: String,
+  Date: Date,
   NumSteps: Number
 },
 {collection: 'fitbitdata'});

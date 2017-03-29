@@ -7,5 +7,5 @@ var fitbitSpecific = require('../../app/controllers/fitbitSpecific.server.contro
 module.exports = function(app) {
   app.route('/api/BCaoFitbit/alldata').get(fitbitPOC.list);
 		
-  app.route('/api/BCaoFitbit/numsteps').get(fitbitSpecific.test);
+  app.route('/api/BCaoFitbit/numsteps').get(fitbitSpecific.list);
 };

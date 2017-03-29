@@ -1,5 +1,5 @@
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html>
+<html ng-app="BCaoFitbit">
 <head>
   <!-- META -->
   <meta charset="utf-8">
@@ -7,32 +7,22 @@
 
   <title>Ben's Fitbit Data</title>
 
-  <!-- SCROLLS -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
   <link rel="stylesheet" href="css/main.css"><!-- load bootstrap -->
 
-  <!-- SPELLS -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery -->
-  <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script> <!-- load angular -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script> <!-- load angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script> <!-- load angular route -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- load Google Charts -->
-  <script src="js/controllers/main.js"></script> <!-- load up our controller -->
-  <script src="js/services/BCaoFitbit.js"></script> <!-- load service -->
   <script src="js/core.js"></script> <!-- load our main application -->
-
+  <script src="js/controllers/HomeController.js"></script> <!-- load up our main controller -->
+  <script src="js/controllers/YearController.js"></script> <!-- load up our controller for data by year -->
+  <script src="js/services/BCaoFitbit.js"></script> <!-- load service -->
 </head>
 
 <body ng-app="BCaoFitbit">
 
-  <div class="container">
-    <div ng-controller="allData">
-      <div id="all_data_div" style="width:100%; height:100%"></div>
-    </div>
-    
-    <div ng-controller="stepGoals">
-      <div id="step_goals_div" style="width:100%; height:100%"></div>
-    </div>
-  </div>
+  <div ng-view></div>
 
 </body>
 </html>
