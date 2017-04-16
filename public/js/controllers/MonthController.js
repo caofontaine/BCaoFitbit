@@ -1,10 +1,12 @@
 /*Grab the data from the API call and format it in Google Charts.*/
 
-app.controller('YearController', ['$scope', '$http', '$routeParams', 'BCaoFitbits', function($scope, $http, $routeParams, BCaoFitbits) {
+app.controller('MonthController', ['$scope', '$http', '$routeParams', 'BCaoFitbits', function($scope, $http, $routeParams, BCaoFitbits) {
   BCaoFitbits.get().then(function(data) { //success() deprecated in 1.6.1
-    var fitbitData = data, year = $routeParams.year;
+    var fitbitData = data, 
+        year = $routeParams.year,
+        month = $routeParams.month;
      
-    drawAllData(fitbitData, year);
-    drawGoals(fitbitData, year);
+    drawAllData(fitbitData, year, month);
+    drawGoals(fitbitData, year, month);
   });
 }]);
