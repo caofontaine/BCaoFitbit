@@ -20,7 +20,6 @@ function drawAllData(data, year, month) {
       if(year && month){
         // If both are defined, check if year and month parameters match data.
         if(checkYearMonthData(year, date.toISOString().substring(0,4), month, date.getMonth())) {
-          console.log(date);
           stepData.addRow([date.toISOString().substring(0,10), strToInt]);
         }
       }
@@ -31,22 +30,7 @@ function drawAllData(data, year, month) {
       }
       else {
         stepData.addRow([date.toISOString().substring(0,10), strToInt]);
-      }
-
-      /*
-      // Check if year is defined.
-      if(year) {
-        // If defined, check if year corresponds to year in data.
-        if(year === data.data[i]['Date'].substring(0,4)) {
-          // If a match, add only data corresponding to that specific year.
-          stepData.addRow([data.data[i]['Date'].substring(0,10), strToInt]);
-        }
-      }
-      // If year is not defined, add all the data.
-      else {
-        stepData.addRow([data.data[i]['Date'].substring(0,10), strToInt]);
-      }*/
-      
+      }      
     }
 
     //stepData.addRows([[data.data[0]['Date'], parseInt(data[0]['Steps'].replace(/\,/g,''))]]);
@@ -103,35 +87,42 @@ function drawGoals(data, year, month) {
       // Data has number of steps as a string (since it has commas). Convert it to integer.
       // Must get rid of comma while doing so, or will error.
       var strToInt = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
+      var date = new Date (data.data[i]['Date']);
 
-      // Check if year is defined.
-      if(year) {
-        // If defined, check if year corresponds to year in data.
-        if(year === data.data[i]['Date'].substring(0,4)){
-          // If it does, add step goals to either hit or miss for that year only.
-          if(strToInt >= 7000) {
-            hit++;
-          }
-          else {
-            miss++;
-          }
+      // Check if year and month are defined.
+      if(year && month){
+        // If both are defined, check if year and month parameters match data.
+        if(checkYearMonthData(year, date.toISOString().substring(0,4), month, date.getMonth())) {
+          if(strToInt >= 7000) hit++;
+          else miss++;
+        }
+      }
+      else if(year) {
+        if(checkYearData(year, date.toISOString().substring(0,4))) {
+          if(strToInt >= 7000) hit++;
+          else miss++;
         }
       }
       else {
-        // Add hit or miss goals for all available data.
-        if(strToInt >= 7000) {
-          hit++;
-        }
-        else {
-          miss++;
-        }
-      }      
+        if(strToInt >= 7000) hit++;
+        else miss++;
+      }
     }
 
     stepData.addRow(['Hit', hit]);
     stepData.addRow(['Miss', miss]);
 
-    if(!year) year = "All";
+    // String manipulation for title option.
+    if(year && month) {
+      month = month.toUpperCase();
+    }
+    else if(!year) {
+      year = "All";
+      month = "";
+    } 
+    else {
+      month = "";
+    }
 
     var options = {
       title: 'Times Hit Goal Steps (7,000+) for ' + year,
