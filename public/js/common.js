@@ -14,22 +14,25 @@ function drawAllData(data, year, month) {
       // Data has number of steps as a string (since it has commas). Convert it to integer.
       // Must get rid of comma while doing so, or will error.
       var strToInt = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
+      var date = new Date (data.data[i]['Date']);
       
-      if(year && month) {
-        if(checkYearData(year, data.data[i]['Date'].getFullYear())) {
-          if(checkMonthData(month, data.data[i]['Date'].getMonth())){
-            stepData.addRow([data.data[i]['Date'].substring(0,10), strToInt]);
-          }
+      // Check if year and month are defined.
+      if(year && month){
+        // If both are defined, check if year and month parameters match data.
+        if(checkYearMonthData(year, date.toISOString().substring(0,4), month, date.getMonth())) {
+          console.log(date);
+          stepData.addRow([date.toISOString().substring(0,10), strToInt]);
         }
       }
       else if(year) {
-        if(checkYearData(year, data.data[i]['Date'].getFullYear())) {
-          stepData.addRow([data.data[i]['Date'].substring(0,10), strToInt]);
+        if(checkYearData(year, date.toISOString().substring(0,4))) {
+          stepData.addRow([date.toISOString().substring(0,10), strToInt]);
         }
       }
       else {
-        stepData.addRow([data.data[i]['Date'].substring(0,10), strToInt]);
+        stepData.addRow([date.toISOString().substring(0,10), strToInt]);
       }
+
       /*
       // Check if year is defined.
       if(year) {
@@ -68,7 +71,7 @@ function drawAllData(data, year, month) {
         title: 'Steps'
       },
       backgroundColor: '#f1f8e9',
-      title: 'Step Data for ' + month + year
+      title: 'Step Data for ' + month + " " + year
     };
 
     var chart = new google.visualization.LineChart(document.getElementById('step_data_div'));
@@ -149,6 +152,11 @@ function drawGoals(data, year, month) {
   });
 }
 
+function checkYearMonthData(year, dataYear, month, dataMonth) {
+  if((checkYearData(year, dataYear)) && (checkMonthData(month, dataMonth))) return true;
+  return false;
+}
+
 function checkYearData(year, dataYear) {
   if(year === dataYear) return true;
   
@@ -156,7 +164,7 @@ function checkYearData(year, dataYear) {
 }
 
 function checkMonthData(month, dataMonth) {
-  if(month === MONTHS[dataMonth].toLowerCase()); return true;
+  if(month === MONTHS[dataMonth].toLowerCase()) return true;
   
   return false;
 }

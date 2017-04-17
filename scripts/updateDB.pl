@@ -8,4 +8,4 @@ system ('mongoimport --db BCaoFitbit --collection fitbitdata --type csv --drop -
 print "\nConverting Date to ISO-Date type:";
 
 # To convert date from MM/DD/YYYY to MongoDB Date type:
-system ('mongo BCaoFitbit --eval "db.fitbitdata.find().forEach(function(doc) { doc.Date = new Date(doc.Date); db.fitbitdata.save(doc);})"');
+system ('mongo BCaoFitbit --eval "db.fitbitdata.find().forEach(function(doc) { doc.Date = new Date(doc.Date); doc.Date.getHours(); doc.Date.setHours(23,0,0,0); db.fitbitdata.save(doc);})"');
