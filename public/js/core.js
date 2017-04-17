@@ -8,9 +8,13 @@ app.config(['$routeProvider', function ($routeProvider) {
       controller: "HomeController",
       templateUrl: "views/home.html"
     })
-    .when('/year/:year', {
+    .when('/:year', {
       controller: 'YearController',
       templateUrl: 'views/year.html'
+    })
+    .when('/:year/:month', {
+      controller: 'MonthController',
+      templateUrl: 'views/month.html'
     })
     .otherwise({
       redirectTo: '/'
