@@ -1,6 +1,6 @@
 /*List of controller and service used for front end interaction.*/
 
-var app = angular.module('BCaoFitbit', ['ngRoute']);
+var app = angular.module('BCaoFitbit', ['ngRoute', 'ui.bootstrap']);
 
 app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider

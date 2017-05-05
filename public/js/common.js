@@ -67,6 +67,7 @@ function drawAllData(data, year, month) {
   $(window).resize(function(){
     drawChart();
   });
+  
 }
 
 /* Taking all gathered data, displays in a pie chart a count of steps over 7,000 or under 7,000 based on parameters. */
