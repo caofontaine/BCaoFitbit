@@ -1,7 +1,7 @@
 {
   "name": "BCaoFitbit",
-  "version": "0.0.0",
-  "description": "POC of importing FitBit CSV data",
+  "version": "1.0.0",
+  "description": "Import Fitbit data and display via Google Charts",
   "main": "server.js",
   "author": "Ben Cao",
   "dependencies": {
