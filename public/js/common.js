@@ -62,11 +62,11 @@ function drawAllData(data, year, month) {
     chart.draw(stepData, options);
     
   }
-  
+  /*
   // Makes chart responsive to resize of browser.
   $(window).resize(function(){
     drawChart();
-  });
+  });*/
   
 }
 
@@ -137,11 +137,11 @@ function drawGoals(data, year, month) {
     chart.draw(stepData, options);
     
   }
-  
+  /*
   // Makes chart responsive to resize of browser.
   $(window).resize(function(){
     drawChart();
-  });
+  });*/
 }
 
 function checkYearMonthData(year, dataYear, month, dataMonth) {
