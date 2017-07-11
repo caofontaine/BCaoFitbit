@@ -2,7 +2,7 @@
 
 var express = require('express');
     morgan = require('morgan'); //provides simple logger middleware
-    bodyParser = require('body-parser'); //provides several middlware to handle request data
+    bodyParser = require('body-parser'); //provides several middleware to handle request data
     methodOverride = require('method-override'); //provides DELETE and PUT HTTP verbs legacy support
 
 module.exports = function() {

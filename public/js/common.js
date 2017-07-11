@@ -126,7 +126,7 @@ function drawGoals(data, year, month) {
     }
 
     var options = {
-      title: 'Times Hit Goal Steps (7,000+) for ' + year,
+      title: 'Times Hit Step Goal (7,000+) for ' + month + " " + year,
       slices: {
         0: { color: 'green' },
         1: { color: 'red' }
