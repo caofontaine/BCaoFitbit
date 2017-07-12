@@ -23,12 +23,12 @@ app.controller('NavController', ['$scope', '$http', 'BCaoFitbits', function($sco
         if(years[i] === date.toISOString().substring(0,4)) {
           if(months.indexOf(MONTHS[date.getMonth()]) == -1) {
             months.push(MONTHS[date.getMonth()]);
-;          }
+;         }
         }
       }
       //Add to scope as a key/value pair based on year.
       $scope.navs.push({'years': years[i], 'months' : months});
-    } 
+    }
     
   });
 }]);

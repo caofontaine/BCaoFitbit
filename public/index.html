@@ -40,7 +40,14 @@
           <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
             <a href id="simple-dropdown" uib-dropdown-toggle>Year<span class="caret"></span></a>
             <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-              <li ng-repeat="x in navs"><a href="#!/{{x.years}}">{{x.years}}</a></li>
+              <!--<li ng-repeat="prop in navs"><p ng-repeat="y in prop.months">{{prop.years}} {{y}}</p></li>-->
+              <!--<li ng-repeat="x in navs"><a href="#!/{{x.years}}">{{x.years}}</a></li>-->
+              <li class="dropdown-submenu" ng-repeat="x in navs">
+                <a href="#!/{{x.years}}">{{x.years}}</a>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="y in x.months"><a href="#!/{{x.years}}/{{y}}">{{y}}</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
