@@ -7,6 +7,8 @@ var db = mongoose();
 
 var app = express();
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 app.listen(port);
 
 module.exports = app;
