@@ -1,5 +1,6 @@
 /*Database criteria.*/
 
 module.exports = {
-  url : 'mongodb://localhost/BCaoFitbit'
+  db : 'mongodb://localhost/BCaoFitbit',
+  testDB : 'mongodb://localhost/BCaoFitbitTest'
 };
