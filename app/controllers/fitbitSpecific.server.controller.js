@@ -1,7 +1,9 @@
 /*Interacts with the database in MongoDB, signifying what
   data manipulation operations to do.*/
 
-var fitbitSpecific = require('mongoose').model('fitbitSpecific');
+var base = process.cwd();
+var fitbitSpecific = require(base + '/app/models/BCaoFitbit.server.model.js').fitbitSpecific;
+//var fitbitSpecific = require('mongoose').model('fitbitSpecific');
 
 // Sort by date, either as Date or String type, isn't ordered correctly.
 // Sorted by its natural order in the database.
