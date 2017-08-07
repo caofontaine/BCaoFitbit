@@ -5,7 +5,9 @@ var base = process.cwd();
 var database = require(base + '/config/database.js'),
     mongoose = require('mongoose'),
     should = require('should');
-var allData = require(base + '/app/controllers/allData.server.controller');
+var allData = require(base + '/app/controllers/allData.server.controller'),
+    fitbitSpecific = require(base + '/app/controllers/fitbitSpecific.server.controller'),
+    testUtils = require(base + '/test/utils');
 
 describe("Database Testing", function() {
   before(function(done) {
@@ -17,10 +19,36 @@ describe("Database Testing", function() {
   
   // Test getting all data. 
   describe("Get All Data", function() {
-    it("should get an array containing all data", function(done) {
+    it("should return an array of length 3 for all data", function(done) {
 
-      allData.list.length.should.equal(3);
-      done();
+      var req = {};
+
+      var res = testUtils.responseValidator(200, function(data) {
+        data.length.should.equal(3);
+        done();
+      });
+      
+      allData.getAllData(req, res);
+      
+    });
+  });
+  
+  // Test getting specific data. 
+  describe("Get Specific Data", function() {
+    it("should return an array length of 3 with only date and step data", function(done) {
+
+      //fitbitSpecific.list.length.should.equal(3);
+      //console.log(fitbitSpecific.getSteps({}));
+      //done();
+      
+      var req = {};
+
+      var res = testUtils.responseValidator(200, function(data) {
+        data.length.should.equal(3);
+        done();
+      });
+      
+      fitbitSpecific.getSteps(req, res);
       
     });
   });
