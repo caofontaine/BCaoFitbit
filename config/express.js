@@ -8,7 +8,7 @@ var express = require('express');
 module.exports = function() {
   var app = express();
   
-  require('../app/routes/BCaoFitbit.server.routes.js')(app);
+  require('../app/routes/BCaoFitbitRoutes.js')(app);
 	
   app.use(morgan('dev')); //log every request to the console
   app.use(bodyParser.urlencoded({

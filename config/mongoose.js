@@ -6,7 +6,7 @@ var database = require('./database'),
 module.exports = function() {
   var db = mongoose.connect(database.db);
 	
-  require('../app/models/BCaoFitbit.server.model');
+  require('../app/models/BCaoFitbitModel');
 	
   return db;
 }

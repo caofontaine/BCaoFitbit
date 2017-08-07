@@ -19,15 +19,15 @@ var allDataSchema = mongoose.Schema({
 
 var allData = mongoose.model('allData', allDataSchema); //Register model name with schema.
 
-var fitbitSpecificSchema = mongoose.Schema({
+var stepsSchema = mongoose.Schema({
   Date: Date,
   NumSteps: Number
 },
 {collection: 'fitbitdata'});
 
-var fitbitSpecific = mongoose.model('fitbitSpecific', fitbitSpecificSchema);
+var steps = mongoose.model('steps', stepsSchema);
 
 module.exports = {
   allData: allData,
-  fitbitSpecific: fitbitSpecific
+  steps: steps
 };

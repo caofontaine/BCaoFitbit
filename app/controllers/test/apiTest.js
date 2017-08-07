@@ -4,10 +4,10 @@ process.env.NODE_ENV = 'test';
 var base = process.cwd();
 var database = require(base + '/config/database.js'),
     mongoose = require('mongoose'),
-    should = require('should');
-var allData = require(base + '/app/controllers/allData.server.controller'),
-    fitbitSpecific = require(base + '/app/controllers/fitbitSpecific.server.controller'),
+    should = require('should'),
     testUtils = require(base + '/test/utils');
+var allData = require(base + '/app/controllers/allData'),
+    steps = require(base + '/app/controllers/steps');
 
 describe("Database Testing", function() {
   before(function(done) {
@@ -36,10 +36,6 @@ describe("Database Testing", function() {
   // Test getting specific data. 
   describe("Get Specific Data", function() {
     it("should return an array length of 3 with only date and step data", function(done) {
-
-      //fitbitSpecific.list.length.should.equal(3);
-      //console.log(fitbitSpecific.getSteps({}));
-      //done();
       
       var req = {};
 
@@ -48,7 +44,7 @@ describe("Database Testing", function() {
         done();
       });
       
-      fitbitSpecific.getSteps(req, res);
+      steps.getSteps(req, res);
       
     });
   });
