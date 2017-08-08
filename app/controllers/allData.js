@@ -22,7 +22,7 @@ module.exports = { getAllData };
       return next(err);
     }
     else {
-      res.json(200, data);
+      res.json(data);
     }
   }).sort({natural: 1});
 };*/

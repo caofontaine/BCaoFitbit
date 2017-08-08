@@ -21,7 +21,7 @@ module.exports = { getSteps };
       return next(err);
     }
     else {
-      res.json(200, numSteps);
+      res.json(numSteps);
     }
   }).sort({Date: 1});
 };*/

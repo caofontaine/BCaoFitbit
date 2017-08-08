@@ -48,4 +48,10 @@ describe("Database Testing", function() {
       
     });
   });
+  
+  // Close database connection.
+  after(function(done) {
+    console.log("Testing complete. Disconnecting from " + database.testDB + ".");
+    mongoose.disconnect(done);
+  });
 });
