@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var allDataSchema = mongoose.Schema({
   Date: Date,
   CaloriesBurned: Number,
-  NumSteps: Number,
+  Steps: Number,
   Distance: Number,
   Floors: Number,
   MinutesSedentary: Number,
@@ -21,7 +21,7 @@ var allData = mongoose.model('allData', allDataSchema); //Register model name wi
 
 var stepsSchema = mongoose.Schema({
   Date: Date,
-  NumSteps: Number
+  Steps: Number
 },
 {collection: 'fitbitdata'});
 

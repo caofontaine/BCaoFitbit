@@ -41,6 +41,8 @@ describe("Database Testing", function() {
 
       var res = testUtils.responseValidator(200, function(data) {
         data.length.should.equal(3);
+        data[0].should.have.property('Date');
+        data[0].should.have.property('Steps');
         done();
       });
       
