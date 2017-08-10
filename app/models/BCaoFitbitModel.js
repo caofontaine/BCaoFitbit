@@ -3,10 +3,10 @@
 var mongoose = require('mongoose');
     Schema = mongoose.Schema;
 
-var allData = mongoose.Schema({
+var allDataSchema = mongoose.Schema({
   Date: Date,
   CaloriesBurned: Number,
-  NumSteps: Number,
+  Steps: Number,
   Distance: Number,
   Floors: Number,
   MinutesSedentary: Number,
@@ -17,11 +17,17 @@ var allData = mongoose.Schema({
 },
 {collection: 'fitbitdata'});
 
-var fitbitSpecific = mongoose.Schema({
+var allData = mongoose.model('allData', allDataSchema); //Register model name with schema.
+
+var stepsSchema = mongoose.Schema({
   Date: Date,
-  NumSteps: Number
+  Steps: Number
 },
 {collection: 'fitbitdata'});
 
-mongoose.model('allData', allData); //Register model name with schema.
-mongoose.model('fitbitSpecific', fitbitSpecific);
+var steps = mongoose.model('steps', stepsSchema);
+
+module.exports = {
+  allData: allData,
+  steps: steps
+};

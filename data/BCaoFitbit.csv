@@ -1,4 +1,4 @@
-Date,Calories Burned,Steps,Distance,Floors,Minutes Sedentary,Minutes Lightly Active,Minutes Fairly Active,Minutes Very Active,Activity Calories
+Date,CaloriesBurned,Steps,Distance,Floors,MinutesSedentary,MinutesLightlyActive,MinutesFairlyActive,MinutesVeryActive,ActivityCalories
 9/7/2015,"1,609","3,184",1.7,0,"1,426",0,0,14,156
 9/8/2015,"1,726","2,512",1.07,0,"1,269",107,0,0,332
 9/9/2015,"2,280","11,516",5.39,0,674,172,19,37,980

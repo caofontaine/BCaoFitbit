@@ -7,6 +7,8 @@ var express = require('express');
 
 module.exports = function() {
   var app = express();
+  
+  require('../app/routes/BCaoFitbitRoutes.js')(app);
 	
   app.use(morgan('dev')); //log every request to the console
   app.use(bodyParser.urlencoded({
@@ -16,8 +18,6 @@ module.exports = function() {
   app.use(bodyParser.json({ type: 'application/vnd.api+json' })); //parse application/vnd.api+json as json
   app.use(methodOverride());
   app.use(express.static('./public')); //set the static files location /public/img will be /img for users
-	
-  require('../app/routes/BCaoFitbit.server.routes.js')(app);
 	
   return app;
 };
