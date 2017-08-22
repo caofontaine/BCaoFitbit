@@ -1,12 +1,12 @@
 /*Defines schema for the data being created or called for/from the database.*/
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var allDataSchema = mongoose.Schema({
   Date: Date,
   CaloriesBurned: Number,
-  Steps: Number,
+  NumSteps: Number,
   Distance: Number,
   Floors: Number,
   MinutesSedentary: Number,
@@ -21,7 +21,7 @@ var allData = mongoose.model('allData', allDataSchema); //Register model name wi
 
 var stepsSchema = mongoose.Schema({
   Date: Date,
-  Steps: Number
+  NumSteps: Number
 },
 {collection: 'fitbitdata'});
 
