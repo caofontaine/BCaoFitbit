@@ -6,6 +6,9 @@ app.factory('BCaoFitbits', ['$http', function($http) {
     },
     getYearSteps : function(year) {
       return $http.get('/api/BCaoFitbit/numsteps/' + year);
+    },
+    getMonthSteps : function(year, month) {
+      return $http.get('/api/BCaoFitbit/numsteps/' + year + '/' + month);
     }
   }
 }]);

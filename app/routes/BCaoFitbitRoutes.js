@@ -4,6 +4,7 @@
 var allData = require('../../app/controllers/allData');
 var allSteps = require('../../app/controllers/allSteps');
 var yearSteps = require('../../app/controllers/yearSteps');
+var monthSteps = require('../../app/controllers/monthSteps');
 
 module.exports = function(app) {
   app.route('/api/BCaoFitbit/alldata').get(allData.getAllData);
@@ -11,4 +12,6 @@ module.exports = function(app) {
   app.route('/api/BCaoFitbit/numsteps/all').get(allSteps.getAllSteps);
   
   app.route('/api/BCaoFitbit/numsteps/:year').get(yearSteps.getYearSteps);
+  
+  app.route('/api/BCaoFitbit/numsteps/:year/:month').get(monthSteps.getMonthSteps);
 };
