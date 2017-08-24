@@ -13,24 +13,10 @@ function drawAllData(data, year, month) {
     for(var i = 0; i < data.data.length; i++) {
       // Data has number of steps as a string (since it has commas). Convert it to integer.
       // Must get rid of comma while doing so, or will error.
-      var strToInt = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
+      var numSteps = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
       var date = new Date (data.data[i]['Date']);
       
-      // Check if year and month are defined.
-      if(year && month){
-        // If both are defined, check if year and month parameters match data.
-        if(checkYearMonthData(year, date.toISOString().substring(0,4), month, date.getMonth())) {
-          stepData.addRow([date.toISOString().substring(0,10), strToInt]);
-        }
-      }
-      else if(year) {
-        if(checkYearData(year, date.toISOString().substring(0,4))) {
-          stepData.addRow([date.toISOString().substring(0,10), strToInt]);
-        }
-      }
-      else {
-        stepData.addRow([date.toISOString().substring(0,10), strToInt]);
-      }      
+      stepData.addRow([date.toISOString().substring(0,10), numSteps]);   
     }
 
     //stepData.addRows([[data.data[0]['Date'], parseInt(data[0]['Steps'].replace(/\,/g,''))]]);
@@ -87,27 +73,12 @@ function drawGoals(data, year, month) {
     for(var i = 0; i < data.data.length; i++) {
       // Data has number of steps as a string (since it has commas). Convert it to integer.
       // Must get rid of comma while doing so, or will error.
-      var strToInt = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
+      var numSteps = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
       var date = new Date (data.data[i]['Date']);
+      
+      if(numSteps >= 7000) hit++;
+      else miss++;
 
-      // Check if year and month are defined.
-      if(year && month){
-        // If both are defined, check if year and month parameters match data.
-        if(checkYearMonthData(year, date.toISOString().substring(0,4), month, date.getMonth())) {
-          if(strToInt >= 7000) hit++;
-          else miss++;
-        }
-      }
-      else if(year) {
-        if(checkYearData(year, date.toISOString().substring(0,4))) {
-          if(strToInt >= 7000) hit++;
-          else miss++;
-        }
-      }
-      else {
-        if(strToInt >= 7000) hit++;
-        else miss++;
-      }
     }
 
     stepData.addRow(['Hit', hit]);
@@ -142,21 +113,4 @@ function drawGoals(data, year, month) {
   $(window).resize(function(){
     drawChart();
   });*/
-}
-
-function checkYearMonthData(year, dataYear, month, dataMonth) {
-  if((checkYearData(year, dataYear)) && (checkMonthData(month, dataMonth))) return true;
-  return false;
-}
-
-function checkYearData(year, dataYear) {
-  if(year === dataYear) return true;
-  
-  return false;
-}
-
-function checkMonthData(month, dataMonth) {
-  if(month === MONTHS[dataMonth].toLowerCase()) return true;
-  
-  return false;
 }
