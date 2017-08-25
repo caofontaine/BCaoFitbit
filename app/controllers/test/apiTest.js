@@ -7,7 +7,9 @@ var database = require(base + '/config/database.js'),
     should = require('should'),
     testUtils = require(base + '/test/utils');
 var allData = require(base + '/app/controllers/allData'),
-    steps = require(base + '/app/controllers/steps');
+    allSteps = require(base + '/app/controllers/allSteps'),
+    yearSteps = require(base + '/app/controllers/yearSteps'),
+    monthSteps = require(base + '/app/controllers/monthSteps');
 
 describe("Database Testing", function() {
   before(function(done) {
@@ -42,11 +44,49 @@ describe("Database Testing", function() {
       var res = testUtils.responseValidator(200, function(data) {
         data.length.should.equal(3);
         data[0].should.have.property('Date');
-        data[0].should.have.property('Steps');
+        data[0].should.have.property('NumSteps');
         done();
       });
       
-      steps.getSteps(req, res);
+      allSteps.getAllSteps(req, res);
+      
+    });
+  });
+  
+  // Test getting data by year. 
+  describe("Get Specific Data By Year", function() {
+    it("should return an array with data from 2015", function(done) {
+      
+      var req = {params: {year: 2015}};
+
+      var res = testUtils.responseValidator(200, function(data) {
+        data.length.should.equal(1);
+        data[0].should.have.property('Year');
+        data[0].Year.should.equal(2015);
+        done();
+      });
+      
+      yearSteps.getYearSteps(req, res);
+      
+    });
+  });
+  
+  // Test getting data by month in a year. 
+  describe("Get Specific Data By Month In A Year", function() {
+    it("should return an array with data from March 2017", function(done) {
+      
+      var req = {params: {year: 2017, month: 'mar'}};
+
+      var res = testUtils.responseValidator(200, function(data) {
+        data.length.should.equal(1);
+        data[0].should.have.property('Year');
+        data[0].Year.should.equal(2017);
+        data[0].should.have.property('Month');
+        data[0].Month.should.equal(3);
+        done();
+      });
+      
+      monthSteps.getMonthSteps(req, res);
       
     });
   });
