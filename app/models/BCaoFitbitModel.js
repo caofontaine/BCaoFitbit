@@ -27,7 +27,15 @@ var stepsSchema = mongoose.Schema({
 
 var steps = mongoose.model('steps', stepsSchema);
 
+var navBarSchema = mongoose.Schema({
+  Year: Number
+},
+{collection: 'fitbitdata'});
+
+var navBar = mongoose.model('navBar', navBarSchema);
+
 module.exports = {
   allData: allData,
-  steps: steps
+  steps: steps,
+  navBar: navBar
 };
