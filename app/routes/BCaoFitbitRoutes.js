@@ -5,8 +5,11 @@ var allData = require('../../app/controllers/allData');
 var allSteps = require('../../app/controllers/allSteps');
 var yearSteps = require('../../app/controllers/yearSteps');
 var monthSteps = require('../../app/controllers/monthSteps');
+var navBar = require('../../app/controllers/navBar');
 
 module.exports = function(app) {
+  app.route('/api/BCaoFitbit/navbar').get(navBar.getNavBar);
+  
   app.route('/api/BCaoFitbit/alldata').get(allData.getAllData);
 		
   app.route('/api/BCaoFitbit/numsteps/all').get(allSteps.getAllSteps);
