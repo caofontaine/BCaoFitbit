@@ -1,6 +1,9 @@
 // Interacts with Node API get data.
 app.factory('BCaoFitbits', ['$http', function($http) {
   return {
+    getNavBar : function() {
+      return $http.get('/api/BCaoFitbit/navbar');
+    },
     getAllSteps : function() {
       return $http.get('/api/BCaoFitbit/numsteps/all');
     },
