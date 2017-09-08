@@ -9,5 +9,3 @@ var getNavBar = function(req, res) {
 };
 
 module.exports = { getNavBar };
-
-//db.fitbitdata.aggregate([{$project:{Year:{"$year":"$Date"},Month:{"$month":"$Date"}}},{"$group":{"_id":null,"DistinctYear":{$addToSet:{"Year":"$Year","Month":"$Month"}}}},{"$unwind":"$DistinctYear"},{"$sort":{"DistinctYear":1}},{"$group":{"_id":null,"DistinctYear":{"$push": "$DistinctYear"}}}])
