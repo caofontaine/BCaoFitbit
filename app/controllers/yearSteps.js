@@ -10,25 +10,3 @@ var getYearSteps = function(req, res) {
 };
 
 module.exports = { getYearSteps };
-
-/*db.fitbitdata.aggregate(
-   [
-     {
-       $project:
-         {
-           Date: "$Date",
-           Steps: "$Steps",
-           year: {$year: "$Date"},
-           month: {$month: "$Date"}
-         }
-     },
-     {
-       $match: {"year": 2017}
-     },
-     {
-       $sort: {Date: 1}
-     }
-   ]
- )*/
- 
- //db.fitbitdata.aggregate([{$project:{Date: "$Date",Steps: "$Steps",year: {$year: "$Date"},month: {$month: "$Date"}}},{$match: {"year": 2017}},{$sort: {Date: 1}}])
