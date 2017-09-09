@@ -2,15 +2,15 @@
 
 var express = require('express');
     morgan = require('morgan'); //provides simple logger middleware
-    bodyParser = require('body-parser'); //provides several middleware to handle request data
-    methodOverride = require('method-override'); //provides DELETE and PUT HTTP verbs legacy support
+    bodyParser = require('body-parser'); //provides several middleware to handle request data, puts data into JSON for use
+    methodOverride = require('method-override'); //simulates DELTE and PUT HTTP requests
 
 module.exports = function() {
   var app = express();
   
   require('../app/routes/BCaoFitbitRoutes.js')(app);
 	
-  app.use(morgan('dev')); //log every request to the console
+  app.use(morgan('dev')); //log every request to the console (dev - concise output for development)
   app.use(bodyParser.urlencoded({
     'extended':'true'
   })); //parse application/x-www-form-urlencoded

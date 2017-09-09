@@ -48,11 +48,11 @@ function drawAllData(data, year, month) {
     chart.draw(stepData, options);
     
   }
-  /*
+  
   // Makes chart responsive to resize of browser.
   $(window).resize(function(){
     drawChart();
-  });*/
+  });
   
 }
 
@@ -74,7 +74,6 @@ function drawGoals(data, year, month) {
       // Data has number of steps as a string (since it has commas). Convert it to integer.
       // Must get rid of comma while doing so, or will error.
       var numSteps = parseInt(data.data[i]['Steps'].replace(/\,/g,''));
-      var date = new Date (data.data[i]['Date']);
       
       if(numSteps >= 7000) hit++;
       else miss++;
@@ -108,9 +107,9 @@ function drawGoals(data, year, month) {
     chart.draw(stepData, options);
     
   }
-  /*
+  
   // Makes chart responsive to resize of browser.
   $(window).resize(function(){
     drawChart();
-  });*/
+  });
 }
